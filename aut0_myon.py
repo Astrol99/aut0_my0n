@@ -26,7 +26,10 @@ try:
             pyautogui.press("right")
             print("[+] Pressed right")
             time.sleep(1)
-            pyautogui.hotkey("ctrl", str(i))
+            if os.name == "nt":
+                pyautogui.hotkey("ctrl", str(i))
+            else:
+                pyautogui.hotkey("command" , str(i))
             print("[+] Switched tabs")
         print(f"[*] On cooldown for {timeWait} secs...")
         time.sleep(timeWait)
