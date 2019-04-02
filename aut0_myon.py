@@ -1,8 +1,27 @@
-import pyautogui
 import time
 import os
-
-#print(pyfiglet.figlet_format("aut0_my0n", font="slant"))
+try:
+    import pyautogui
+except ImportError:
+    print("[!] Looks like you don't have pyautogui installed!")
+    user_input = input("[/] Would you like to install it now?[Y/n]: ")
+    user_input = str(user_input).lower()
+    if user_input == "y":
+        print("[!] Installing pyautogui...\n")
+        if os.name == "nt":
+            os.system("pip3 install pyautogui")
+        elif os.name == "posix":
+            os.system("python3 -m pip install pyautogui")
+        print("\n[!] Successfully installed pyautogui -> please run this program again. Exiting...")
+        exit()
+    elif user_input == "n":
+        print("[!] Exiting...")
+        exit()
+    else:
+        print("""[!] Invalid response: Enter either 'y' or 'n' (doesn't matter if it's lowercase or uppercase)      
+    -> please run the program again. Exiting...
+            """)
+        exit()
 
 print("""
                __  ____                       ____      
