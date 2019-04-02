@@ -23,14 +23,13 @@ try:
                 continue # Used to pass loop 0
             print(f"\n[*] On tab: {i}...")
             time.sleep(0.5)
-            pyautogui.press("right")
-            print("[+] Pressed right")
-            time.sleep(1)
             if os.name == "nt":
                 pyautogui.hotkey("ctrl", str(i))
             else:
                 pyautogui.hotkey("command" , str(i))
-            print("[+] Switched tabs")
+            print(f"[+] Switched tabs to tab: {i}")
+            pyautogui.press("right")
+            print("[+] Pressed right -> Turned page")
         print(f"[*] On cooldown for {timeWait} secs...")
         time.sleep(timeWait)
 except KeyboardInterrupt:
