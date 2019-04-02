@@ -1,11 +1,22 @@
 import pyautogui
-import pyfiglet
 import time
 import os
 
-print(pyfiglet.figlet_format("aut0_my0n", font="slant"))
-print("~ A program that reads books for you to increase minutes on MyOn and increased with mutiple tabs")
-print("By: David Nguyen\nTIP: press ctrl+c to stop the program when focused on terminal!\n")
+#print(pyfiglet.figlet_format("aut0_my0n", font="slant"))
+
+print("""
+               __  ____                       ____      
+  ____ ___  __/ /_/ __ \     ____ ___  __  __/ __ \____ 
+ / __ `/ / / / __/ / / /    / __ `__ \/ / / / / / / __ \\
+/ /_/ / /_/ / /_/ /_/ /    / / / / / / /_/ / /_/ / / / /
+\__,_/\__,_/\__/\____/____/_/ /_/ /_/\__, /\____/_/ /_/ 
+                    /_____/         /____/          
+                    
+                | Version: 1.0.0 |       
+                 | By: Astrol99 | 
+
+TIP: Press Ctrl or Control + C to exit program!\n
+""")
 
 tabs = int(input("[i] Amount of tabs open: ")) + 1
 timeWait = int(input("[i] Amount of seconds per wait: "))
