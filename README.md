@@ -19,7 +19,7 @@ $ git clone https://github.com/Astrol99/aut0_my0n.git
 2. Running python script
 If you don't have pyfiglet installed, the program will prompt you to ask if you allow it to install pyfiglet automatically
 ```
-cd aut0_my0n
-python3 aut0_myon.py
+$ cd aut0_my0n
+$ python3 aut0_myon.py
 ```
 3. Enjoy!
