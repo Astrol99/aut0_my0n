@@ -1,6 +1,7 @@
 # Aut0_my0n
 A program that reads books for you to increase minutes on MyOn and increased with mutiple tabs. 
 
+![Image of program in console](/resources/preview.JPG)
 # Installation (easy way)
 1. Go to the [Releases](https://github.com/Astrol99/aut0_my0n/releases) page and go to the latest release. 
 2. Once on latest, download the first .zip file and unzip it. 
