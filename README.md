@@ -8,7 +8,7 @@ A program that reads books for you to increase minutes on MyOn and increased wit
 3. Double-click on the executable. **NOTE** that it will be blank for a few seconds so please be patient and wait until a big text shows up. 
 4. Once you're in, enter how many tabs you have and the time/cooldown to wait until switching tabs. That's it! Sit back and relax as you enjoy your free minutes on MyOn.
 
-# Installation (self-compile)
+# Installation (hard-way)
 ### Requirements
 * Python3
 ### Procedures
