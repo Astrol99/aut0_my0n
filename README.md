@@ -1,4 +1,4 @@
-# Aut0_my0n
+# aut0_my0n
 A program that reads books for you to increase minutes on MyOn and increased with mutiple tabs. 
 
 ![Image of program in console](/resources/preview.JPG)
