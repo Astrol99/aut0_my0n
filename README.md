@@ -1,3 +1,4 @@
+# DEPRECATED!!! THIS VERSION IS NO LONGER SUPPORTED
 # aut0_my0n
 A program that reads books for you to increase minutes on MyOn and increased with mutiple tabs. 
 
