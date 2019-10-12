@@ -16,6 +16,10 @@ class auto_myon:
         self.USERNAME = username
         self.PASSWORD = password
 
+        debug("Opening browser...")
+        self.driver = self.driver_path(BROWSER)
+        self.driver.set_window_size(1000,800)
+
     # Decides which driver to use
     def driver_path(self, browser):
         if browser == "firefox":
@@ -42,25 +46,24 @@ class auto_myon:
 
         # Password part
         debug("Finding password input box")
-        password_box = self.driver.find_element_by_id("ember516")
+        try:
+            password_box = self.driver.find_element_by_id("ember516")
+        except Exception as e:
+            debug(f"ELEMENT ERROR: UNABLE TO FIND ELEMENT\n{e}")
+            self.driver.quit()
+            exit()
         debug("Entering password credentials")
         password_box.send_keys(PASSWORD)
         debug("Submitting password...")
         submit_btn.click()
 
+    # Main browsing functions 
     def read(self):
-        debug("Opening browser...")
-        self.driver = self.driver_path(BROWSER)
-
         # Goes to harmony portal to log in through clever then myon
         debug("Going into portal...")
         self.driver.get(self.PORTAL)
 
         self.login()
-
-        time.sleep(10)
-
-        self.driver.close()
 
 if __name__ == '__main__':
     BROWSER = input(f"[!] Firefox or Chrome?: ").lower()
