@@ -56,6 +56,26 @@ class auto_myon:
         password_box.send_keys(PASSWORD)
         debug("Submitting password...")
         submit_btn.click()
+    
+    def jump_tabs(self):
+        # Opens clever tab
+        debug("Opening new tab")
+        self.driver.execute_script("window.open('');")
+        debug("Switching to clever window")
+        self.driver.switch_to.window(self.driver.window_handles[1])
+        self.driver.get("https://clever.com/in/hps/student/portal?skip=1&specify_auth=saml")
+
+        time.sleep(2)
+
+        # Opens myon tab
+        debug("Opening new tab")
+        self.driver.execute_script("window.open('');")
+        debug("Switching to myon window")
+        self.driver.switch_to.window(self.driver.window_handles[2])
+        myon_link = "https://clever.com/oauth/authorize?channel=clever-portal&client_id=e9883f835c1c58894763&confirmed=true&district_id=53fbb405cfc2cc490d000006&redirect_uri=https%3A%2F%2Fwww.myon.com%2Fapi%2Foauth%2Fsso.html%3Ainstantlogin&response_type=code"
+        self.driver.get(myon_link)
+
+        # Close first two tabs since they're irrevelvant now
 
     # Main browsing functions 
     def read(self):
@@ -64,10 +84,17 @@ class auto_myon:
         self.driver.get(self.PORTAL)
 
         self.login()
+        self.jump_tabs()
+
+        '''
+        time.sleep(10)
+
+        self.driver.quit()
+        '''
 
 if __name__ == '__main__':
     BROWSER = input(f"[!] Firefox or Chrome?: ").lower()
-    USERNAME = input(f"[!] Username: ")
+    USERNAME = input(f"[!] User ID: ")
     PASSWORD = input(f"[!] Password: ")
 
     myon = auto_myon(BROWSER, USERNAME, PASSWORD)
