@@ -29,17 +29,24 @@ class auto_myon:
         return driver
 
     def login(self):
+        # Submit info element
+        submit_btn = self.driver.find_element_by_id("authn-go-button")
+
         # Username part
         debug("Finding username input box")
         username_box = self.driver.find_element_by_id("identification")
-        debug("Entering login credentials")
+        debug("Entering username credentials")
         username_box.send_keys(USERNAME)
         debug("Submitting username...")
-        username_submit_btn = self.driver.find_element_by_id("authn-go-button")
-        username_submit_btn.click()
+        submit_btn.click()
 
         # Password part
-
+        debug("Finding password input box")
+        password_box = self.driver.find_element_by_id("ember516")
+        debug("Entering password credentials")
+        password_box.send_keys(PASSWORD)
+        debug("Submitting password...")
+        submit_btn.click()
 
     def read(self):
         debug("Opening browser...")
