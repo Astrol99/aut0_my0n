@@ -75,7 +75,28 @@ class auto_myon:
         myon_link = "https://clever.com/oauth/authorize?channel=clever-portal&client_id=e9883f835c1c58894763&confirmed=true&district_id=53fbb405cfc2cc490d000006&redirect_uri=https%3A%2F%2Fwww.myon.com%2Fapi%2Foauth%2Fsso.html%3Ainstantlogin&response_type=code"
         self.driver.get(myon_link)
 
-        # Close first two tabs since they're irrevelvant now
+    def myon_nav(self):
+        mins = int(input("[!] Read Time?(minutes): "))
+        delay = int(input("[!] Delay per page?(seconds): "))
+        input("[!] Please select one book then type 'read' to start reading!: ")
+
+        endTime = datetime.datetime.now() + datetime.timedelta(minutes=mins)
+        print("[!] Estimated to be complete in "+str(endTime))
+
+        debug("Finding next page button")
+        right_btn = self.driver.find_element_by_class_name("stage_button.-rightArrow")
+        debug("Initating read function...")
+        debug("Running loop...")
+
+        print("\n~auto_myon is now running in the background...you may now enjoy free minutes while doing other tasks~")
+        
+        while datetime.datetime.now() <= endTime:
+            try:
+                right_btn.click()
+                time.sleep(delay)
+            except KeyboardInterrupt:
+                debug("User interrupted; exiting...")
+                break
 
     # Main browsing functions 
     def read(self):
@@ -85,12 +106,9 @@ class auto_myon:
 
         self.login()
         self.jump_tabs()
-
-        '''
-        time.sleep(10)
-
+        self.myon_nav()
+        print("[!] You may now close the browser window")
         self.driver.quit()
-        '''
 
 if __name__ == '__main__':
     BROWSER = input(f"[!] Firefox or Chrome?: ").lower()
