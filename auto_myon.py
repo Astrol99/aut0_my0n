@@ -1,4 +1,5 @@
 from selenium import webdriver
+import detect_browser
 import credentials
 import pyfiglet
 import datetime
@@ -119,9 +120,9 @@ if __name__ == '__main__':
     print("-"*60)
     print(pyfiglet.figlet_format("auto_myon", "slant"))
     print("-"*60)
-    print("> v2.1.0 Beta")
+    print("> v2.1.5")
     print("> Made by: astrol99")
-    BROWSER = input(f"\n[!] Are you using Firefox or Chrome?: ").lower()
+    BROWSER = detect_browser.check()
     USERNAME, PASSWORD = credentials.get()
 
     myon = auto_myon(BROWSER, USERNAME, PASSWORD)
