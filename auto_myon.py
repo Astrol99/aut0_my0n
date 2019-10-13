@@ -1,4 +1,5 @@
 from selenium import webdriver
+from colorama import init, Fore, Back, Style
 import detect_browser
 import credentials
 import pyfiglet
@@ -7,12 +8,14 @@ import time
 import sys
 import os
 
+init() # Initalizes colorama lib
+
 # Gives time info on what program is doing for debug purposes
 def debug(debug_info):
     if "-v" in sys.argv:
         now = datetime.datetime.now()
         debug_time = f"{now.hour}:{now.minute}:{now.second}"
-        print(f"[DEBUG {debug_time}] {debug_info}")
+        print(Style.BRIGHT+Fore.YELLOW+f"[DEBUG {debug_time}] {debug_info}"+Style.NORMAL+Fore.WHITE)
     else:
         pass
 
@@ -72,7 +75,7 @@ class auto_myon:
         self.driver.switch_to.window(self.driver.window_handles[1])
         self.driver.get("https://clever.com/in/hps/student/portal?skip=1&specify_auth=saml")
 
-        time.sleep(2)
+        time.sleep(3)
 
         # Opens myon tab
         debug("Opening new tab")
@@ -83,13 +86,13 @@ class auto_myon:
         self.driver.get(myon_link)
 
     def myon_nav(self):
-        print("<<Options>>")
+        print(Fore.CYAN+"<<Options>>"+Fore.WHITE)
         mins = int(input("[!] Read Time? (minutes): "))
         delay = int(input("[!] Delay per page? (seconds): "))
         input("[!] Please select one book then press enter to start reading ")
 
         endTime = datetime.datetime.now() + datetime.timedelta(minutes=mins)
-        print("--> Estimated to be complete in "+str(endTime))
+        print(Fore.GREEN+Style.BRIGHT+"--> Estimated to be complete in "+str(endTime)+Fore.WHITE+Style.NORMAL)
 
         debug("Finding next page button")
         right_btn = self.driver.find_element_by_class_name("stage_button.-rightArrow")
@@ -122,11 +125,11 @@ class auto_myon:
         self.driver.quit()
 
 if __name__ == '__main__':
-    print("-"*60)
-    print(pyfiglet.figlet_format("auto_myon", "slant"))
-    print("-"*60)
-    print("> v2.1.6")
-    print("> Made by: astrol99\n")
+    print(Fore.CYAN+"-"*60)
+    print(Fore.RED+pyfiglet.figlet_format("auto_myon", "slant"))
+    print(Fore.CYAN+"-"*60+Fore.WHITE)
+    print(Fore.YELLOW+"> v2.1.6")
+    print(Fore.YELLOW+"> Made by: astrol99\n"+Fore.WHITE)
     BROWSER = detect_browser.check()
     USERNAME, PASSWORD = credentials.get()
 

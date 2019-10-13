@@ -1,10 +1,11 @@
+from colorama import Style, Fore
 import datetime
 import auto_myon
 import json
 import os
 
 def create_file():
-    print("<<Portal Login>>")
+    print(Fore.CYAN+"<<Portal Login>>"+Fore.WHITE)
     USERNAME = input(f"[!] User ID: ")
     PASSWORD = input(f"[!] Password: ")
 
@@ -35,7 +36,7 @@ def get():
     else:
         auto_myon.debug("Found creds.json!")
         auto_myon.debug("Reading creds.json")
-        print("[!] Using Saved Login Details")
+        print(Fore.GREEN+Style.BRIGHT+"[!] Using Saved Login Details"+Fore.WHITE+Style.NORMAL)
         CREDENTIALS = read_file()
     
     auto_myon.debug("Returning details...")
