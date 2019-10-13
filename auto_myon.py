@@ -1,4 +1,5 @@
 from selenium import webdriver
+import credentials
 import pyfiglet
 import datetime
 import time
@@ -77,12 +78,12 @@ class auto_myon:
         self.driver.get(myon_link)
 
     def myon_nav(self):
-        mins = int(input("[!] Read Time?(minutes): "))
-        delay = int(input("[!] Delay per page?(seconds): "))
-        input("[!] Please select one book then type 'read' to start reading!: ")
+        mins = int(input("[!] Read Time? (minutes): "))
+        delay = int(input("[!] Delay per page? (seconds): "))
+        input("[!] Please select one book then press enter to start reading ")
 
         endTime = datetime.datetime.now() + datetime.timedelta(minutes=mins)
-        print("[!] Estimated to be complete in "+str(endTime))
+        print("--> Estimated to be complete in "+str(endTime))
 
         debug("Finding next page button")
         right_btn = self.driver.find_element_by_class_name("stage_button.-rightArrow")
@@ -118,11 +119,10 @@ if __name__ == '__main__':
     print("-"*60)
     print(pyfiglet.figlet_format("auto_myon", "slant"))
     print("-"*60)
-    print("> v2.0.1 Beta")
+    print("> v2.1.0 Beta")
     print("> Made by: astrol99")
     BROWSER = input(f"\n[!] Are you using Firefox or Chrome?: ").lower()
-    USERNAME = input(f"[!] User ID: ")
-    PASSWORD = input(f"[!] Password: ")
+    USERNAME, PASSWORD = credentials.get()
 
     myon = auto_myon(BROWSER, USERNAME, PASSWORD)
     myon.read()
