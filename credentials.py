@@ -1,5 +1,5 @@
 import datetime
-import auto_myon
+from auto_myon import debug
 import json
 import os
 
@@ -25,16 +25,16 @@ def read_file():
     return CREDENTIALS 
 
 def get():
-    auto_myon.debug("Checking if creds.json exists")
+    debug("Checking if creds.json exists")
     if os.path.isfile("./creds.json") == False:
-        auto_myon.debug("creds.json file doesn't exist! => Creating file...")
+        debug("creds.json file doesn't exist! => Creating file...")
         create_file()
-        auto_myon.debug("Reading creds.json")
+        debug("Reading creds.json")
         CREDENTIALS = read_file()
     else:
-        auto_myon.debug("Found creds.json!")
-        auto_myon.debug("Reading creds.json")
+        debug("Found creds.json!")
+        debug("Reading creds.json")
         CREDENTIALS = read_file()
     
-    auto_myon.debug("Returning details...")
+    debug("Returning details...")
     return CREDENTIALS

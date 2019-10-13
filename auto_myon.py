@@ -2,6 +2,7 @@ from selenium import webdriver
 import detect_browser
 import credentials
 import pyfiglet
+import update
 import datetime
 import time
 import os
@@ -120,8 +121,9 @@ if __name__ == '__main__':
     print("-"*60)
     print(pyfiglet.figlet_format("auto_myon", "slant"))
     print("-"*60)
-    print("> v2.1.5")
+    print("> v2.1.6")
     print("> Made by: astrol99")
+    update.check()
     BROWSER = detect_browser.check()
     USERNAME, PASSWORD = credentials.get()
 
