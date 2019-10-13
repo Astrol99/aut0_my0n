@@ -128,7 +128,7 @@ if __name__ == '__main__':
     print(Fore.CYAN+"-"*60)
     print(Fore.RED+pyfiglet.figlet_format("auto_myon", "slant"))
     print(Fore.CYAN+"-"*60+Fore.WHITE)
-    print(Fore.YELLOW+"> v2.1.6")
+    print(Fore.YELLOW+"> v2.2.1")
     print(Fore.YELLOW+"> Made by: astrol99\n"+Fore.WHITE)
     BROWSER = detect_browser.check()
     USERNAME, PASSWORD = credentials.get()

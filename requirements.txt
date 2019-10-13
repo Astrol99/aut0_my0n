@@ -1,3 +1,5 @@
 selenium
 pyfiglet
 colorama
+idna
+cx_Freeze
