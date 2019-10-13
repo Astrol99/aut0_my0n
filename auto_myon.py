@@ -88,7 +88,7 @@ class auto_myon:
         debug("Initating read function...")
         debug("Running loop...")
 
-        print("\n~auto_myon is now running in the background...you may now enjoy free minutes while doing other tasks~")
+        print("\n~ auto_myon is now running in the background...you may now enjoy free minutes while doing other tasks ~")
         
         while datetime.datetime.now() <= endTime:
             try:
@@ -100,17 +100,23 @@ class auto_myon:
 
     # Main browsing functions 
     def read(self):
-        # Goes to harmony portal to log in through clever then myon
-        debug("Going into portal...")
-        self.driver.get(self.PORTAL)
+        try:
+            # Goes to harmony portal to log in through clever then myon
+            debug("Going into portal...")
+            self.driver.get(self.PORTAL)
 
-        self.login()
-        self.jump_tabs()
-        self.myon_nav()
+            self.login()
+            self.jump_tabs()
+            self.myon_nav()
+        except Exception as e:
+            debug(f"ERROR: {e}")
         print("[!] You may now close the browser window")
         self.driver.quit()
 
 if __name__ == '__main__':
+    print("--auto_myon--")
+    print("v2.0.0 Beta")
+    print("Made by: astrol99\n")
     BROWSER = input(f"[!] Firefox or Chrome?: ").lower()
     USERNAME = input(f"[!] User ID: ")
     PASSWORD = input(f"[!] Password: ")
