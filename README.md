@@ -8,8 +8,8 @@ Nobody wants to read boring kindergarten books online, that's why this exists.
 ### For Typical Users
 1. Go to the releases section at https://github.com/Astrol99/aut0_my0n/releases then go to the latest one
 2. Download the zip folder named "auto_myon.x.x.x.zip"
-3. Extract the file
-4. Go into the file
+3. Extract the folder
+4. Go into the folder
 5. Click on auto_myon.exe
 6. Enjoy!
 ### For Developers
