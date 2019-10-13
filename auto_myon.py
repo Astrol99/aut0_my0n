@@ -9,9 +9,12 @@ import os
 
 # Gives time info on what program is doing for debug purposes
 def debug(debug_info):
-    now = datetime.datetime.now()
-    debug_time = f"{now.hour}:{now.minute}:{now.second}"
-    print(f"[DEBUG {debug_time}] {debug_info}")
+    if "-v" in sys.argv:
+        now = datetime.datetime.now()
+        debug_time = f"{now.hour}:{now.minute}:{now.second}"
+        print(f"[DEBUG {debug_time}] {debug_info}")
+    else:
+        pass
 
 class auto_myon:
     def __init__(self, browser, username, password):
@@ -80,6 +83,7 @@ class auto_myon:
         self.driver.get(myon_link)
 
     def myon_nav(self):
+        print("<<Options>>")
         mins = int(input("[!] Read Time? (minutes): "))
         delay = int(input("[!] Delay per page? (seconds): "))
         input("[!] Please select one book then press enter to start reading ")
@@ -92,7 +96,7 @@ class auto_myon:
         debug("Initating read function...")
         debug("Running loop...")
 
-        print("\n~ auto_myon is now running in the background...you may now enjoy free minutes while doing other tasks ~")
+        print("\n~ auto_myon is now running in the background - Press CTRL + C to exit ~")
         
         while datetime.datetime.now() <= endTime:
             try:
