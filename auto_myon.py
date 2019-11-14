@@ -1,4 +1,7 @@
 from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from colorama import init, Fore, Back, Style
 import detect_browser
 import credentials
@@ -12,7 +15,7 @@ init() # Initalizes colorama lib
 
 # Gives time info on what program is doing for debug purposes
 def debug(debug_info):
-    if "-v" in sys.argv:
+    if "-d" in sys.argv:
         now = datetime.datetime.now()
         debug_time = f"{now.hour}:{now.minute}:{now.second}"
         print(Style.BRIGHT+Fore.YELLOW+f"[DEBUG {debug_time}] {debug_info}"+Style.NORMAL+Fore.WHITE)
@@ -44,7 +47,8 @@ class auto_myon:
 
     def login(self):
         # Submit info element
-        submit_btn = self.driver.find_element_by_id("authn-go-button")
+        #submit_btn = self.driver.find_element_by_id("authn-go-button")
+        submit_btn = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.ID, "authn-go-button")))
 
         # Username part
         debug("Finding username input box")
