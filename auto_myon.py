@@ -125,8 +125,9 @@ class auto_myon:
             self.myon_nav()
         except Exception as e:
             debug(f"ERROR: {e}")
-        print("[!] You may now close the browser window")
+        print("[+] Finished reading! You may now close the browser window")
         self.driver.quit()
+        input("\nPress any key to quit...")
 
 if __name__ == '__main__':
     print(Fore.CYAN+"-"*60)
