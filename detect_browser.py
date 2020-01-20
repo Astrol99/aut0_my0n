@@ -7,9 +7,9 @@ import os
 
 def check():
     auto_myon.debug("Checking if firefox or chrome is installed...")
-    #if os.path.isfile(r"C:\Program Files\Mozilla Firefox\firefox.exe"):
-    #    print(Fore.GREEN+Style.BRIGHT+"--- Found firefox! => Using firefox as primary browser ---"+Fore.WHITE+Style.NORMAL)
-    #    return "firefox"
+    if os.path.isfile(r"C:\Program Files\Mozilla Firefox\firefox.exe"):
+        print(Fore.GREEN+Style.BRIGHT+"--- Found firefox! => Using firefox as primary browser ---"+Fore.WHITE+Style.NORMAL)
+        return "firefox"
     if os.path.isfile(r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"):
         print(Fore.GREEN+Style.BRIGHT+"--- Found chrome! => Using chrome as primary browser ---"+Fore.WHITE+Style.NORMAL)
         return "chrome"
