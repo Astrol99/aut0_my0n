@@ -15,7 +15,7 @@ init() # Initalizes colorama lib
 
 # Gives time info on what program is doing for debug purposes
 def debug(debug_info):
-    if "-d" in sys.argv:
+    if "-v" in sys.argv:
         now = datetime.datetime.now()
         debug_time = f"{now.hour}:{now.minute}:{now.second}"
         print(Style.BRIGHT+Fore.YELLOW+f"[DEBUG {debug_time}] {debug_info}"+Style.NORMAL+Fore.WHITE)
@@ -52,16 +52,18 @@ class auto_myon:
 
         # Username part
         debug("Finding username input box")
-        username_box = self.driver.find_element_by_id("identification")
+        username_box = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.ID, "identification")))
+        #username_box = self.driver.find_element_by_id("identification")
         debug("Entering username credentials")
         username_box.send_keys(USERNAME)
         debug("Submitting username...")
         submit_btn.click()
 
         # Password part
-        debug("Finding password input box")
+        debug("Finding password input box...")
         try:
-            password_box = self.driver.find_element_by_id("ember516")
+            password_box = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.ID, "ember516")))
+            #password_box = self.driver.find_element_by_id("ember516")
         except Exception as e:
             debug(f"ELEMENT ERROR: UNABLE TO FIND ELEMENT\n{e}")
             self.driver.quit()
@@ -127,7 +129,7 @@ class auto_myon:
             debug(f"ERROR: {e}")
         print("[+] Finished reading! You may now close the browser window")
         self.driver.quit()
-        input("\nPress any key to quit...")
+        input("\nPress enter to quit...")
 
 if __name__ == '__main__':
     print(Fore.CYAN+"-"*60)
