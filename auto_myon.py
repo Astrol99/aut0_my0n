@@ -26,9 +26,10 @@ class auto_myon:
     def __init__(self):
         self.PORTAL = "https://my.harmonytx.org"
         self.USERNAME , self.PASSWORD = credentials.get()
+        self.BROWSER = detect_browser.checkBrowser()
 
         debug("Opening browser...")
-        self.driver = detect_browser.getDriver()
+        self.driver = detect_browser.getDriver(self.BROWSER)
         self.driver.set_window_size(1000,800)
 
     def login(self):
