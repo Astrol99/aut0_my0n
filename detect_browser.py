@@ -1,3 +1,4 @@
+from selenium import webdriver
 from colorama import Style, Fore
 import auto_myon
 import os
@@ -16,3 +17,15 @@ def check():
     else:
         auto_myon.debug("Found no browser!")
         return None
+
+# Decides which driver to use
+def getDriver(browser=check()):
+    if browser == "firefox":
+        driver = webdriver.Firefox(executable_path=os.path.abspath("./web_drivers/geckodriver.exe"))
+    elif browser == "chrome":
+        driver = webdriver.Chrome(executable_path=os.path.abspath("./web_drivers/chromedriver.exe"))
+    else:
+        print("[-] Invalid Browser Type! Exiting...")
+        exit()
+
+    return driver

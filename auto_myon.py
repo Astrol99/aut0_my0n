@@ -23,27 +23,13 @@ def debug(debug_info):
         pass
 
 class auto_myon:
-    def __init__(self, browser, username, password):
+    def __init__(self):
         self.PORTAL = "https://my.harmonytx.org"
-        self.BROWSER = browser
-        self.USERNAME = username
-        self.PASSWORD = password
+        self.USERNAME , self.PASSWORD = credentials.get()
 
         debug("Opening browser...")
-        self.driver = self.driver_path(BROWSER)
+        self.driver = detect_browser.getDriver()
         self.driver.set_window_size(1000,800)
-
-    # Decides which driver to use
-    def driver_path(self, browser):
-        if browser == "firefox":
-            driver = webdriver.Firefox(executable_path=os.path.abspath("./web_drivers/geckodriver.exe"))
-        elif browser == "chrome":
-            driver = webdriver.Chrome(executable_path=os.path.abspath("./web_drivers/chromedriver.exe"))
-        else:
-            print("[-] Invalid Browser Type! Exiting...")
-            exit()
-
-        return driver
 
     def login(self):
         # Submit info element
@@ -55,7 +41,7 @@ class auto_myon:
         username_box = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.ID, "identification")))
         #username_box = self.driver.find_element_by_id("identification")
         debug("Entering username credentials")
-        username_box.send_keys(USERNAME)
+        username_box.send_keys(self.USERNAME)
         debug("Submitting username...")
         submit_btn.click()
 
@@ -69,7 +55,7 @@ class auto_myon:
             self.driver.quit()
             exit()
         debug("Entering password credentials")
-        password_box.send_keys(PASSWORD)
+        password_box.send_keys(self.PASSWORD)
         debug("Submitting password...")
         submit_btn.click()
     
@@ -137,8 +123,6 @@ if __name__ == '__main__':
     print(Fore.CYAN+"-"*60+Fore.WHITE)
     print(Fore.YELLOW+"> v2.2.3")
     print(Fore.YELLOW+"> Made by: astrol99\n"+Fore.WHITE)
-    BROWSER = detect_browser.check()
-    USERNAME, PASSWORD = credentials.get()
 
-    myon = auto_myon(BROWSER, USERNAME, PASSWORD)
+    myon = auto_myon()
     myon.read()
