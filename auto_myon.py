@@ -122,7 +122,7 @@ if __name__ == '__main__':
     print(Fore.CYAN+"-"*60)
     print(Fore.RED+pyfiglet.figlet_format("auto_myon", "slant"))
     print(Fore.CYAN+"-"*60+Fore.WHITE)
-    print(Fore.YELLOW+"> v3.0)
+    print(Fore.YELLOW+"> v3.0")
     print(Fore.YELLOW+"> Made by: astrol99\n"+Fore.WHITE)
 
     myon = auto_myon()
