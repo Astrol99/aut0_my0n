@@ -28,6 +28,9 @@ class auto_myon:
         self.USERNAME , self.PASSWORD = credentials.get()
         self.BROWSER = detect_browser.checkBrowser()
 
+        # Get webdriver
+
+        # Set browser parameters
         debug("Opening browser...")
         self.driver = detect_browser.getDriver(self.BROWSER)
         self.driver.set_window_size(1000,800)
@@ -124,6 +127,6 @@ if __name__ == '__main__':
     print(Fore.CYAN+"-"*60+Fore.WHITE)
     print(Fore.YELLOW+"> v3.0")
     print(Fore.YELLOW+"> Made by: astrol99\n"+Fore.WHITE)
-
+    
     myon = auto_myon()
     myon.read()

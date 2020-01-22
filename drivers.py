@@ -1,4 +1,5 @@
 import subprocess
+import requests
 
 # C:\Program Files\Mozilla Firefox\firefox.exe
 # C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
@@ -13,10 +14,11 @@ def getBrowserVersion(browser):
             return None
 
     elif browser is "chrome":
-        pass
+        url = "https://chromedriver.storage.googleapis.com/LATEST_RELEASE"
+        response = requests.request("GET", url)
+        version = response.text
+
     return version
 
-def downloadDrivers():
+def downloadDrivers(browser, version):
     pass
-
-print(getBrowserVersion("firefox"))
