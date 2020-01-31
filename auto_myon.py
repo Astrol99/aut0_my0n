@@ -10,6 +10,7 @@ import datetime
 import time
 import sys
 import os
+import drivers
 
 init() # Initalizes colorama lib
 
@@ -29,10 +30,12 @@ class auto_myon:
         self.BROWSER = detect_browser.checkBrowser()
 
         # Get webdriver
+        # Download drivers from website and save it into drivers dir
+        drivers.downloadDrivers(self.BROWSER)
 
         # Set browser parameters
         debug("Opening browser...")
-        self.driver = detect_browser.getDriver(self.BROWSER)
+        self.driver = detect_browser.getDriver(self.BROWSER)    # Open drivers according to self.BROWSER
         self.driver.set_window_size(1000,800)
 
     def login(self):
