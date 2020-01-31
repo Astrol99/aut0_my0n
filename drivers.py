@@ -1,32 +1,21 @@
 import subprocess
 import requests
 from tqdm import tqdm
-
-# C:\Program Files\Mozilla Firefox\firefox.exe
-# C:\Program Files (x86)\Google\Chrome\Application\chrome.exe
-
-"""
-def getBrowserVersion(browser):
-    if browser is "firefox":
-        # Geckodriver v0.26.0 minimum recommended Firefox version: >= 60
-        version = subprocess.check_output("C:\\Program Files\\Mozilla Firefox\\firefox.exe -v | more".split()).decode("utf-8")
-        version = version.replace("\r\n", "")[16:]  # Get only version num and clean up string
-        
-        if int(version.split(".")[0]) < 60:   # Get first number seperated by "." Ex: 72.0.1 and test if it's less than 60
-            return None
-
-        print("Got firefox version: " + version)
-
-    elif browser is "chrome":
-        url = "https://chromedriver.storage.googleapis.com/LATEST_RELEASE"
-        response = requests.request("GET", url)
-        version = response.text
-
-    return version
-"""
+import zipfile
+import os
 
 def extract(file_name):
-    pass
+    # Extract
+    with zipfile.ZipFile(file_name, 'r') as zipref:
+        if "gecko" in file_name:
+            zipref.extractall("./web_drivers/geckodriver.exe")
+        elif "chrome" in file_name:
+            zipref.extractall("./web_drivers/chromedriver.exe")
+        else:
+            zipref.extractall("./drivers/" + file_name)
+    
+    # Clean up by deleting zip file
+    os.remove(file_name)
 
 def downloadFirefox():
     # Download geckodriver
@@ -41,17 +30,11 @@ def downloadFirefox():
     # Unzip the zip file and extract main geckodriver.exe
     extract("geckodriver-v0.26.0-win32.zip")
 
-    # Make new folder: "drivers"
-
-    # Move geckodriver into that folder
-
 
 def downloadChrome():
     pass
 
 def downloadDrivers(browser):
-    # version = getBrowserVersion(browser)
-
     if browser is "firefox":
         try:
             downloadFirefox()
@@ -66,5 +49,3 @@ def downloadDrivers(browser):
             
         except Exception as e:
             debug("Error downloading chromedrivers\n" + e)
-
-downloadFirefox()
