@@ -32,14 +32,15 @@ def downloadFirefox():
     # Download geckodriver
     url = "https://github.com/mozilla/geckodriver/releases/download/v0.26.0/geckodriver-v0.26.0-win32.zip"
     response = requests.get(url, stream=True)
+    file_size = int(response.headers.get('Content-Length'))
 
     with open("geckodriver-v0.26.0-win32.zip", "wb") as handle:
-        for data in tqdm(response.iter_content()):
+        for data in tqdm(response.iter_content(), total=file_size):
             handle.write(data)
 
     # Unzip the zip file and extract main geckodriver.exe
     extract("geckodriver-v0.26.0-win32.zip")
-    
+
     # Make new folder: "drivers"
 
     # Move geckodriver into that folder
