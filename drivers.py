@@ -40,14 +40,16 @@ def downloadFirefox():
     extract(filename)
 
 def downloadChrome():
-    filename = None
+    def getLatestChromeVersion():
+        url = "https://chromedriver.storage.googleapis.com/LATEST_RELEASE"
+        response = requests.get(url)
+        
+        return response.text
 
-    if platform.architecture()[0] == "64bit":
-        url = ""
-        filename = ""
-    else:
-        url = ""
-        filename = ""
+    filename = "chromedriver_win32.zip"
+    latestVersion = getLatestChromeVersion()
+
+    url = f"https://chromedriver.storage.googleapis.com/{latestVersion}/chromedriver_win32.zip"
 
     response = requests.get(url, stream=True)
     file_size = int(response.headers.get('Content-Length'))
