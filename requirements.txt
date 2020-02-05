@@ -3,3 +3,4 @@ pyfiglet
 colorama
 pyinstaller
 tqdm
+requests
