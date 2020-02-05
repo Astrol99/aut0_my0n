@@ -31,7 +31,7 @@ class auto_myon:
 
         # Get webdriver
         # Download drivers from website and save it into drivers dir
-        print(Fore.GREEN+Style.BRIGHT+"[*] Downloading webdriver..."+Fore.WHITE+Style.NORMAL)
+        print(Fore.CYAN+Style.BRIGHT+"[*] Downloading webdriver..."+Fore.WHITE+Style.NORMAL)
         downloadStatus = drivers.downloadDrivers(self.BROWSER)
 
         if downloadStatus == False:
@@ -39,7 +39,7 @@ class auto_myon:
             exit()
 
         # Set browser parameters
-        debug("Opening browser...")
+        print(Fore.CYAN+Style.BRIGHT+"[*] Opening browser and redirecting to portal..."+Fore.WHITE+Style.NORMAL)
         self.driver = detect_browser.getDriver(self.BROWSER)    # Open drivers according to self.BROWSER
         self.driver.set_window_size(1000,800)
 

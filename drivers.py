@@ -40,7 +40,23 @@ def downloadFirefox():
     extract(filename)
 
 def downloadChrome():
-    pass
+    filename = None
+
+    if platform.architecture()[0] == "64bit":
+        url = ""
+        filename = ""
+    else:
+        url = ""
+        filename = ""
+
+    response = requests.get(url, stream=True)
+    file_size = int(response.headers.get('Content-Length'))
+
+    with open(filename, 'wb') as handle:
+        for data in tqdm(response.iter_content(), total=file_size):
+            handle.write(data)
+
+    extract(filename)
 
 def downloadDrivers(browser):
     if browser is "firefox":
