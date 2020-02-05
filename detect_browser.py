@@ -21,9 +21,9 @@ def checkBrowser():
 # Decides which driver to use
 def getDriver(browser):
     if browser == "firefox":
-        driver = webdriver.Firefox(executable_path=os.path.abspath("./web_drivers/geckodriver.exe"))
+        driver = webdriver.Firefox(executable_path=os.path.abspath("./web_drivers/geckodriver/geckodriver.exe"))
     elif browser == "chrome":
-        driver = webdriver.Chrome(executable_path=os.path.abspath("./web_drivers/chromedriver.exe"))
+        driver = webdriver.Chrome(executable_path=os.path.abspath("./web_drivers/chromedriver/chromedriver.exe"))
     else:
         print("[-] Invalid Browser Type! Exiting...")
         exit()

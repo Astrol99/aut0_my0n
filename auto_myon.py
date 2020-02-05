@@ -31,7 +31,12 @@ class auto_myon:
 
         # Get webdriver
         # Download drivers from website and save it into drivers dir
-        drivers.downloadDrivers(self.BROWSER)
+        print(Fore.GREEN+Style.BRIGHT+"[*] Downloading webdriver..."+Fore.WHITE+Style.NORMAL)
+        downloadStatus = drivers.downloadDrivers(self.BROWSER)
+
+        if downloadStatus == False:
+            print("Error downloading webdrivers")
+            exit()
 
         # Set browser parameters
         debug("Opening browser...")
@@ -128,7 +133,7 @@ if __name__ == '__main__':
     print(Fore.CYAN+"-"*60)
     print(Fore.RED+pyfiglet.figlet_format("auto_myon", "slant"))
     print(Fore.CYAN+"-"*60+Fore.WHITE)
-    print(Fore.YELLOW+"> v3.0")
+    print(Fore.YELLOW+"> v3.0.0")
     print(Fore.YELLOW+"> Made by: astrol99\n"+Fore.WHITE)
     
     myon = auto_myon()
