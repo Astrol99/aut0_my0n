@@ -1,5 +1,4 @@
 selenium
-pyfiglet
 colorama
 pyinstaller
 tqdm
