@@ -33,7 +33,7 @@ def downloadFirefox():
     file_size = int(response.headers.get('Content-Length'))
 
     with open(filename, "wb") as handle:
-        for data in tqdm(response.iter_content(), total=file_size):
+        for data in tqdm(response.iter_content(), total=file_size, ascii=True):
             handle.write(data)
 
     # Unzip the zip file and extract main geckodriver.exe
@@ -55,7 +55,7 @@ def downloadChrome():
     file_size = int(response.headers.get('Content-Length'))
 
     with open(filename, 'wb') as handle:
-        for data in tqdm(response.iter_content(), total=file_size):
+        for data in tqdm(response.iter_content(), total=file_size, ascii=True):
             handle.write(data)
 
     extract(filename)
