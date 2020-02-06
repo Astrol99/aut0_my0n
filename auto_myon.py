@@ -5,7 +5,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from colorama import init, Fore, Back, Style
 import detect_browser
 import credentials
-import pyfiglet
 import datetime
 import time
 import sys
@@ -130,8 +129,17 @@ class auto_myon:
         input("\nPress enter to quit...")
 
 if __name__ == '__main__':
+    figletText = """
+               __
+  ____ ___  __/ /_____       ____ ___  __  ______  ____
+ / __ `/ / / / __/ __ \     / __ `__ \/ / / / __ \/ __ \\
+/ /_/ / /_/ / /_/ /_/ /    / / / / / / /_/ / /_/ / / / /
+\__,_/\__,_/\__/\____/____/_/ /_/ /_/\__, /\____/_/ /_/
+                    /_____/         /____/
+    """
+
     print(Fore.CYAN+"-"*60)
-    print(Fore.RED+pyfiglet.figlet_format("auto_myon", "slant"))
+    print(Fore.RED+Style.BRIGHT+figletText+Style.NORMAL)
     print(Fore.CYAN+"-"*60+Fore.WHITE)
     print(Fore.YELLOW+"> v3.0.0")
     print(Fore.YELLOW+"> Made by: astrol99\n"+Fore.WHITE)
