@@ -1,0 +1,6 @@
+__pycache__
+build
+dist
+creds.json
+web_drivers
+geckodriver.log

@@ -59,7 +59,8 @@ class auto_myon:
         # Password part
         debug("Finding password input box...")
         try:
-            password_box = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.ID, "ember516")))
+            # This is buggy af ~ not persistent -> too lazy to fix
+            password_box = WebDriverWait(self.driver, 20).until(EC.element_to_be_clickable((By.ID, "ember517")))
             #password_box = self.driver.find_element_by_id("ember516")
         except Exception as e:
             debug(f"ELEMENT ERROR: UNABLE TO FIND ELEMENT\n{e}")
@@ -141,7 +142,7 @@ if __name__ == '__main__':
     print(Fore.CYAN+"-"*60)
     print(Fore.RED+Style.BRIGHT+figletText+Style.NORMAL)
     print(Fore.CYAN+"-"*60+Fore.WHITE)
-    print(Fore.YELLOW+"> v3.0.0")
+    print(Fore.YELLOW+"> v3.0.1")
     print(Fore.YELLOW+"> Made by: astrol99\n"+Fore.WHITE)
     
     myon = auto_myon()

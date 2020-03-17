@@ -4,6 +4,8 @@ import auto_myon
 import json
 import os
 
+
+# Probably not a good idea to store usernames and passwords in plain text ~ too lazy to fix
 def create_file():
     print(Fore.CYAN+"<<Portal Login>>"+Fore.WHITE)
     USERNAME = input(f"[!] User ID: ")

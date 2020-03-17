@@ -60,6 +60,7 @@ def downloadChrome():
 
     extract(filename)
 
+# Should probably use already downloaded drivers instead of downloading new ones again and again, wasting gigabytes of downloads
 def downloadDrivers(browser):
     if browser is "firefox":
         try:
